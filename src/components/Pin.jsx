@@ -120,10 +120,10 @@ const Pin = ({ pin: { postedBy, image, _id, destination, save } }) => {
           </div>
         )}
       </div>
-      <div className='mt-2 flex items-center gap-2'>
+      <Link to={`/user-profile/${postedBy._id}`} className='mt-2 flex items-center gap-2'>
         <img src={postedBy?.image} alt="user-profile" className='w-8 h-8 rounded-full object-cover' />
         <p className='font-semibold text-slate-600'>{postedBy?.userName}</p>
-      </div>
+      </Link>
     </div>
   );
 };

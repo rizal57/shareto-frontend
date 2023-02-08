@@ -5,9 +5,8 @@ import { AiOutlineCloudUpload } from 'react-icons/ai';
 import {categories} from '../utils/data';
 import { client } from '../client';
 import { MdDelete } from 'react-icons/md';
-import { fetchUser } from '../utils/fetchUser';
 
-const CreatePin = () => {
+const CreatePin = ({ user }) => {
   const [title, setTitle] = useState('');
   const [about, setAbout] = useState('');
   const [destination, setDestination] = useState('');
@@ -16,8 +15,6 @@ const CreatePin = () => {
   const [category, setCategory] = useState(null);
   const [imageAsset, setImageAsset] = useState(null);
   const [wrongImageType, setWrongImageType] = useState(null);
-
-  const user = fetchUser();
 
   const navigate = useNavigate();
 
@@ -58,7 +55,7 @@ const CreatePin = () => {
         },
         userId: user._id,
         postedBy: {
-          _type: 'postedBy',
+          _type: 'postyedBy',
           _ref: user._id,
         },
         category
