@@ -101,7 +101,7 @@ const Pin = ({ pin: { postedBy, image, _id, destination, save } }) => {
                   className='py-0.5 flex items-center justify-center px-2 rounded-full bg-white opacity-75 hover:opacity-100 hover:shadow-md text-sm'
                 >
                   <BsFillArrowUpRightCircleFill className='mr-1' />
-                  {destination.slice(8, 20)}...
+                  {destination.length > 15 ? `${destination.slice(0, 15)}...` : destination}
                 </Link>
               )}
               {postedBy?._id === user.googleId && (
