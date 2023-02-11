@@ -7,6 +7,7 @@ import { client } from '../client';
 import { userCreatedPinsQuery, userQuery, userSavedPinsQuery } from '../utils/data';
 import Spinner from './Spinner';
 import MasonryLayout from './MasonryLayout';
+import { fetchUser } from '../utils/fetchUser';
 
 const UserProfile = () => {
   const [user, setUser] = useState(null);
@@ -15,10 +16,11 @@ const UserProfile = () => {
   const [activeBtn, setActiveBtn] = useState('created');
   const navigate = useNavigate();
   const {userId} = useParams();
+  const authUser = fetchUser();
 
   const randomImage = 'http://source.unsplash.com/1600x900/?neature,photography.technology';
-  const activeBtnStyles = 'transition-all duration-300 bg-red-500 text-white font-bold p-2 rounded-full w-20 outline-none';
-  const notActiveBtnStyles = 'transition-all duration-300 bg-slate-20 mr-4 text-black font-bold p-2 rounded-full w-20 outline-none';
+  const activeBtnStyles = 'transition-all duration-300 bg-red-500 text-white font-bold py-2 px-4 rounded-full outline-none';
+  const notActiveBtnStyles = 'transition-all duration-300 bg-slate-20 mr-4 text-black font-bold py-2 px-4 rounded-full outline-none';
 
   useEffect(() => {
     const query = userQuery(userId);
@@ -74,7 +76,7 @@ const UserProfile = () => {
               {user.userName}
             </h1>
             <div className='absolute top-2 z-1 right-2'>
-              {userId === user._id && (
+              {userId === authUser.googleId && (
                 <GoogleLogout
                   clientId={process.env.REACT_APP_GOOGLE_API_TOKEN}
                   render={(renderProps) => (

@@ -77,7 +77,7 @@ const CreatePin = ({ user }) => {
       )}
       <div className='flex flex-col lg:flex-row justify-center items-center rounded-lg bg-white lg:p-5 p-3 lg:w-4/5 w-full'>
         <div className='bg-slate-300 p-3 flex flex-0.7 w-full rounded-lg'>
-          <div className='flex justify-center items-center flex-col rounded-lg border-2 border-dotted border-gray-200 p-3 w-full h-[420px]'>
+          <div className='flex justify-center items-center flex-col rounded-lg border-2 border-dotted border-gray-200 p-3 w-full h-auto'>
             {loading && <Spinner />}
             {wrongImageType && <p>Wrong image type.</p>}
             {!imageAsset ? (
@@ -102,7 +102,7 @@ const CreatePin = ({ user }) => {
               </label>
             ) : (
               <div className='relative h-full'>
-                <img src={imageAsset?.url} alt="Upload pic" className='h-full w-full md:w-auto md:h-auto md:mt-20 rounded-lg object-cover' />
+                <img src={imageAsset?.url} alt="Upload pic" className='h-full w-full md:w-auto md:h-auto md:my-10 rounded-lg object-cover' />
                 <button
                   type='button'
                   className='absolute bg-white bottom-3 right-3 p-3 rounded-full text-xl cursor-pointer outline-none hover:shadow-md transition-all duration-300 ease-in-out'
@@ -126,7 +126,7 @@ const CreatePin = ({ user }) => {
           {user && (
             <div className='flex items-center gap-2 my-2'>
               <img
-                src={user?.imageUrl}
+                src={user?.image}
                 alt="user-profile"
                 className='w-9 h-9 rounded-full shadow-md'
               />
